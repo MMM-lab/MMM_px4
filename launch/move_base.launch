@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments -->
+  <!--<arg name="map_file" default="$(find px4)/maps/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" output="screen"/>-->
+
+  <!-- AMCL -->
+  <!--<include file="$(find px4)/launch/amcl.launch"/>-->
+
+  <!--<node pkg="px4_interface" type="odom_publisher" name="odom_publisher"/>-->
+
+  <!-- move base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <rosparam file="$(find px4)/config/move_base_params.yaml" command="load" />
+    <rosparam file="$(find px4)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find px4)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find px4)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find px4)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find px4)/config/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find px4)/config/dwa_local_planner_params.yaml" command="load" />
+    <remap from="/cmd_vel" to="/mavros/setpoint_velocity/cmd_vel_unstamped"/>
+  </node>
+
+</launch>

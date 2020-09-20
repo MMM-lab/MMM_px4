@@ -57,4 +57,5 @@
     <param name="/mavros/local_position/frame_id" type="str" value="odom" />
     <param name="/mavros/local_position/tf/frame_id" type="str" value="odom" />
     <param name="/mavros/setpoint_velocity/mav_frame"  type="str" value="BODY_NED" />
+
 </launch>
