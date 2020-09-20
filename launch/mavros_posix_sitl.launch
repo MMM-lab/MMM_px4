@@ -51,4 +51,5 @@
         <arg name="fcu_url" value="$(arg fcu_url)"/>
         <arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
     </include>
+    <param name="/mavros/setpoint_velocity/mav_frame"  type="str" value="BODY_NED" />
 </launch>
