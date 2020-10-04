@@ -4,6 +4,9 @@
   <!--<arg name="map_file" default="$(find px4)/maps/map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" output="screen"/>-->
   <node name="map_server" pkg="map_server" type="map_server" args="$(find px4)/maps/world_map.yaml" output="screen"/>
+
+  <!--<node pkg="tf" name="base2lidar" type="static_transform_publisher" args="0 0 0.1 0 0 0 base_link rplidar_link 100"/>-->
+
   <!-- AMCL -->
   <include file="$(find px4)/launch/amcl.launch"/>
 
@@ -17,10 +20,10 @@
     <rosparam file="$(find px4)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find px4)/config/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find px4)/config/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find px4)/config/base_local_planner_params.yaml" command="load" />
+    <!--<rosparam file="$(find px4)/config/base_local_planner_params.yaml" command="load" />-->
     <rosparam file="$(find px4)/config/dwa_local_planner_params.yaml" command="load" />
     <remap from="/cmd_vel" to="/mavros/setpoint_velocity/cmd_vel_unstamped"/>
-    <remap from="/laser/scan" to="/scan"/>
+    <!--<remap from="/laser/scan" to="/scan"/>-->
   </node>
 
 </launch>
